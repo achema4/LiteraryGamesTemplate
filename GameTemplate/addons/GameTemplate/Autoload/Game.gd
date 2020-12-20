@@ -16,6 +16,7 @@ func _ready()->void:
 	connect("Exit",			self, "on_Exit")
 	connect("ChangeScene",	self, "on_ChangeScene")
 	connect("Restart", 		self, "restart_scene")
+	connect("NewGame",self,"on_NewGame")
 
 func on_ChangeScene(scene)->void:
 	if ScreenFade.state != ScreenFade.IDLE:
@@ -48,4 +49,7 @@ func on_Exit()->void:
 	if ScreenFade.state != ScreenFade.IDLE:
 		return
 	get_tree().quit()
+
+func on_NewGame()->void:
+	on_ChangeScene("res://scenes/Level0/TestScene.tscn")
 

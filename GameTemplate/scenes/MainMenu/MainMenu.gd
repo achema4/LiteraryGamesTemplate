@@ -1,6 +1,5 @@
 extends CanvasLayer
-
-export (String, FILE, "*.tscn") var First_Level: String
+export (String, "res://scenes/Level0/TestScene.tscn") var First_Level:String
 
 func _ready()->void:
 	get_tree().get_nodes_in_group("MainMenu")[0].grab_focus()					#Godot doesn't have buttons auto grab_focus when noone has focus
@@ -9,7 +8,7 @@ func _ready()->void:
 	if OS.get_name() == "HTML5":
 		$"BG/MarginContainer/VBoxMain/HBoxContainer/ButtonContainer/Exit".visible = false
 	#Localization
-	SettingsLanguage.connect("ReTranslate", self, "retranslate")
+	#SettingsLanguage.connect("ReTranslate", self, "retranslate")
 	retranslate()
 
 func on_options(value:bool)->void:
@@ -17,8 +16,7 @@ func on_options(value:bool)->void:
 		get_tree().get_nodes_in_group("MainMenu")[0].grab_focus()
 
 func _on_NewGame_pressed()->void:
-	Game.emit_signal("NewGame")
-	Game.emit_signal("ChangeScene", First_Level)
+	Game.emit_signal("ChangeScene", "res://scenes/Level0/TestScene.tscn")
 
 func _on_Options_pressed()->void:
 	MenuEvent.Options = true
